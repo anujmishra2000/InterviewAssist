@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+    <div class = "archive content">
+        <h2>All Interview Experiences</h2>
+        <% if(archives.length > 0) { %>
+            <% archives.forEach(archive => { %>
+                <div class = "archive-data">
+                    <a class = "single" href = "/archives/<%= archive._id %>">
+                        <h3 class = "title"> <%= archive.title + ' ' + archive.role + ' ' + archive.drive %>   </h3> 
+                        <p class = "snippet"> <%=  new Date(archive.createdAt).toLocaleDateString('en-GB') %> </p>
+                    </a>
+                </div>
+            <% }) %>
+        <% } else {  %>
+            <h3>No experiences to display</h3>
+        <% } %>
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
+<!-- new Date(archives.createdAt).toLocaleDateString('en-GB') -->

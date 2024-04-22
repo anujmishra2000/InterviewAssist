@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class = "create-archive content">
+        <form action = "/archives" method = "POST" >
+            <label for = "title">Company name</label>
+            <input type = "text" id = "title" name = "title" required>
+            <label for = "snippet">Job Role:</label>
+            <input type = "text" id = "role" name ="role" required>
+            <label for = "snippet">Years of Experience Required:</label>
+            <input type = "text" id = "yoe" name ="yoe" required >
+            <label for = "snippet">Drive:</label>
+            <input type = "text" id = "drive" name ="drive" required >
+            <label for = "body">Interview/Coding Rounds Description: </label>
+            <textarea id = "body" name = "body" required ></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

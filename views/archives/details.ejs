@@ -1,0 +1,38 @@
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+
+<body>
+  <%- include("../partials/navbar.ejs") %>
+
+  <div class="details content">
+    <h2>Company Name: <%= archive.title %></h2>
+    <h4>Job Role: <%= archive.role %></h4>
+    <h4>Years of Experience: <%= archive.yoe %></h4>
+    <h4>Drive type: <%= archive.drive %></h4>
+    <div class="content preservespace">
+      <p><%= archive.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= archive._id %>">
+      <img src ="/trashcan.svg" alt="Delete">
+    </a>
+  </div>
+
+  <%- include("../partials/footer.ejs") %>
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/archives/${trashcan.dataset.doc}`;
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>
